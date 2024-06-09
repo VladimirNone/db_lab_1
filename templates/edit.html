@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit {{ model }}</title>
+</head>
+<body>
+    <h1>Edit {{ model | capitalize }}</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form method="POST">
+        {% for key, column in item.__table__.columns.items() %}
+            {% if not key.startswith('_') and key != 'id' %}
+                <label for="{{ key }}">{{ key }} ({{ column.type }})</label>
+                <input type="text" id="{{ key }}" name="{{ key }}" value="{{ getattr(item, key) }}">
+                <br>
+            {% endif %}
+        {% endfor %}
+        <input type="submit" value="Update">
+    </form>
+</body>
+</html>

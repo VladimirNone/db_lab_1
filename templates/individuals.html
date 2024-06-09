@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Individuals</title>
+</head>
+<body>
+    <h1>Individuals</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <a href="{{ url_for('add', model='individual') }}">Add New Individual</a>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Middle Name</th>
+            <th>Passport</th>
+            <th>Tax ID</th>
+            <th>Insurance ID</th>
+            <th>Driver License</th>
+            <th>Additional Docs</th>
+            <th>Note</th>
+            <th>Borrower ID</th>
+            <th>Actions</th>
+        </tr>
+        {% for individual in individuals %}
+        <tr>
+            <td>{{ individual.id }}</td>
+            <td>{{ individual.first_name }}</td>
+            <td>{{ individual.last_name }}</td>
+            <td>{{ individual.middle_name }}</td>
+            <td>{{ individual.passport }}</td>
+            <td>{{ individual.tax_id }}</td>
+            <td>{{ individual.insurance_id }}</td>
+            <td>{{ individual.driver_license }}</td>
+            <td>{{ individual.additional_docs }}</td>
+            <td>{{ individual.note }}</td>
+            <td>{{ individual.borrower_id }}</td>
+            <td>
+                <a href="{{ url_for('edit', model='individual', id=individual.id) }}">Edit</a>
+                <a href="{{ url_for('delete', model='individual', id=individual.id) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

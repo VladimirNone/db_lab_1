@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Business Loans</title>
+</head>
+<body>
+    <h1>Business Loans</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <a href="{{ url_for('add', model='business_loan') }}">Add New Business Loan</a>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Organization ID</th>
+            <th>Individual ID</th>
+            <th>Amount</th>
+            <th>Term</th>
+            <th>Interest Rate</th>
+            <th>Conditions</th>
+            <th>Note</th>
+            <th>Borrower ID</th>
+            <th>Actions</th>
+        </tr>
+        {% for business_loan in business_loans %}
+        <tr>
+            <td>{{ business_loan.id }}</td>
+            <td>{{ business_loan.organization_id }}</td>
+            <td>{{ business_loan.individual_id }}</td>
+            <td>{{ business_loan.amount }}</td>
+            <td>{{ business_loan.term }}</td>
+            <td>{{ business_loan.interest_rate }}</td>
+            <td>{{ business_loan.conditions }}</td>
+            <td>{{ business_loan.note }}</td>
+            <td>{{ business_loan.borrower_id }}</td>
+            <td>
+                <a href="{{ url_for('edit', model='business_loan', id=business_loan.id) }}">Edit</a>
+                <a href="{{ url_for('delete', model='business_loan', id=business_loan.id) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

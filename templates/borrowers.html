@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Borrowers</title>
+</head>
+<body>
+    <h1>Borrowers</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <a href="{{ url_for('add', model='borrower') }}">Add New Borrower</a>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Tax ID</th>
+            <th>Entity Type</th>
+            <th>Address</th>
+            <th>Amount</th>
+            <th>Conditions</th>
+            <th>Legal Notes</th>
+            <th>Contract List</th>
+            <th>Actions</th>
+        </tr>
+        {% for borrower in borrowers %}
+        <tr>
+            <td>{{ borrower.borrower_id }}</td>
+            <td>{{ borrower.tax_id }}</td>
+            <td>{{ borrower.entity_type }}</td>
+            <td>{{ borrower.address }}</td>
+            <td>{{ borrower.amount }}</td>
+            <td>{{ borrower.conditions }}</td>
+            <td>{{ borrower.legal_notes }}</td>
+            <td>{{ borrower.contract_list }}</td>
+            <td>
+                <a href="{{ url_for('edit', model='borrower', id=borrower.borrower_id) }}">Edit</a>
+                <a href="{{ url_for('delete', model='borrower', id=borrower.borrower_id) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
