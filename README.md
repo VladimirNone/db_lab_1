@@ -26,8 +26,8 @@ python index.py
 ![](imagesForLab/image-business-loans.png)
 ![](imagesForLab/image-individuals.png)
 ### Изменение объекта
-![](imagesForLab/image-edit-borrowers.png)
-![](imagesForLab/image-edit-individuals.png)
+![](imagesForLab/image-edit-borrower.png)
+![](imagesForLab/image-edit-individual.png)
 ### Добавление объекта
 ![](imagesForLab/image-add-borrowers.png)
 ### Попытка удалить (на него ссылается другой, поэтому не удалось)
