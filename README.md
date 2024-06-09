@@ -29,7 +29,7 @@ python index.py
 ![](imagesForLab/image-edit-borrower.png)
 ![](imagesForLab/image-edit-individual.png)
 ### Добавление объекта
-![](imagesForLab/image-add-borrowers.png)
+![](imagesForLab/image-add-borrower.png)
 ### Попытка удалить (на него ссылается другой, поэтому не удалось)
 ![](imagesForLab/image-try-delete.png)
 
